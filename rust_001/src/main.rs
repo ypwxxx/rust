@@ -1,6 +1,8 @@
 use rand::Rng;
 use std::{cmp::Ordering, io};
 
+//ANCHOR - 一个猜数字游戏
+
 fn main() {
     println!("Guess the number!");
 
