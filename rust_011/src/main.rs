@@ -1,5 +1,5 @@
 //ANCHOR - 常用集合
-use std::collections::HashMap;
+use std::{collections::HashMap, ops::Mul};
 
 fn main() {
     println!("Hello, rust011!");
@@ -65,4 +65,29 @@ fn main() {
     let n = obj.get(&'k').copied().unwrap_or(0);
 
     //TODO - 完成最后的小目标
+    let mut list: Vec<i32> = vec![-1, -3, 8, 9, 5, -5, 9, 0, 9, 7, 12, 32, 543, 23];
+    check_vec(&mut list);
+}
+
+fn check_vec(list: &mut Vec<i32>) {
+    let mut info: HashMap<i32, u32> = HashMap::new();
+    let mut t = 0;
+
+    list.sort();
+    // let t = list.len() as u32 / 2;
+
+    for i in list {
+        println!("i = {i}");
+        let n = info.entry(*i).or_insert(0);
+        *n += 1;
+    }
+
+    println!("info: {:?}", info);
+
+    for (k, v) in info {
+        if v > t {
+            println!("{k}-{v}");
+            t = v;
+        }
+    }
 }
